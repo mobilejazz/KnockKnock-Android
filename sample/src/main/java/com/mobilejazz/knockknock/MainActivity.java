@@ -13,14 +13,14 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    Knock knock = Knock.knock();
+    Knock.knock().initialize(this);
 
-    boolean areYouThere = knock.areYouThere(this);
+    boolean areYouThere = Knock.knock().areYouThere();
     Log.d(TAG, "Are you there: " + areYouThere);
 
-    boolean areYouWifi = knock.whosThere(this, Knock.Actor.WIFI);
-    boolean areYouCellular = knock.whosThere(this, Knock.Actor.CELLULAR);
-    boolean areYouAny = knock.whosThere(this, Knock.Actor.ANY);
+    boolean areYouWifi = Knock.knock().whosThere(Knock.Actor.WIFI);
+    boolean areYouCellular = Knock.knock().whosThere(Knock.Actor.CELLULAR);
+    boolean areYouAny = Knock.knock().whosThere(Knock.Actor.ANY);
 
     Log.d(TAG, "Are you wifi: " + areYouWifi);
     Log.d(TAG, "Are you cellular: " + areYouCellular);

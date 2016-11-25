@@ -13,6 +13,7 @@ public class Knock {
   }
 
   private static Knock instance;
+  private Context context;
 
   private Knock() {
   }
@@ -28,17 +29,25 @@ public class Knock {
     return instance;
   }
 
+  public void initialize(Context context) {
+    this.context = context;
+  }
+
   /**
    * True if reachable, False otherwise.
    */
-  public boolean areYouThere(Context context) {
-    return whosThere(context, Actor.ANY);
+  public boolean areYouThere() {
+    checkContextParameter();
+
+    return whosThere(Actor.ANY);
   }
 
   /**
    * True if reachable via the specific actor, False otherwise.
    */
-  public boolean whosThere(Context context, Actor actor) {
+  public boolean whosThere(Actor actor) {
+    checkContextParameter();
+
     final ConnectivityManager connectivityManager =
         ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
 
@@ -58,6 +67,13 @@ public class Knock {
       }
     } else {
       return false;
+    }
+  }
+
+  private void checkContextParameter() {
+    if (context == null) {
+      throw new IllegalStateException(
+          "context == null | You must call to Knock.knock().initialize() method first");
     }
   }
 }
