@@ -1,3 +1,5 @@
+![Mobile Jazz Vastra](https://raw.githubusercontent.com/mobilejazz/metadata/master/images/banners/mobile-jazz-knockknock-android.jpg)
+
 KnockKnock
 ==========
 
