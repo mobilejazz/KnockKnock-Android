@@ -20,7 +20,7 @@ Add KnockKnock dependency to your `build.gradle` file (in your module)
 
 ```xml
 dependencies {
-  compile 'com.mobilejazz.knockknock:library:0.9-SNAPSHOT'
+  compile 'com.mobilejazz.knockknock:library:1.0-SNAPSHOT'
 }
 ```
 
